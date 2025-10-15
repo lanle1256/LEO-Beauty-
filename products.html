@@ -174,42 +174,31 @@
     </div>
   </footer>
 
- <script>
+  <script src="script.js"></script>
+  <script>
 document.addEventListener('DOMContentLoaded', async () => {
   const grid = document.getElementById('product-grid');
-  
-  try {
-    const res = await fetch('https://68efa498b06cc802829e312e.mockapi.io/products');
-    if (!res.ok) throw new Error('Không thể tải sản phẩm');
-    const products = await res.json();
-
-    grid.innerHTML = '';
-    if (products.length === 0) {
-      grid.innerHTML = '<p>Chưa có sản phẩm nào.</p>';
-      return;
-    }
-
-    products.forEach(p => {
-      const card = document.createElement('article');
-      card.className = 'product-card';
-      card.innerHTML = `
-        <img src="${p.image || 'image/a1.jpg'}" alt="${p.name}" style="cursor:pointer;">
-        <h3>${p.name}</h3>
-        <p class="price">${Number(p.price).toLocaleString('vi-VN')}₫</p>
-        <a class="btn detail-link" href="product-detail.html?id=${p.id}">Xem chi tiết</a>
-      `;
-      card.querySelector('img').onclick = () => {
-        window.location.href = `product-detail.html?id=${p.id}`;
-      };
-      grid.appendChild(card);
-    });
-  } catch (err) {
-    console.error(err);
-    grid.innerHTML = '<p>Lỗi khi tải dữ liệu sản phẩm 😢</p>';
-  }
+  const res = await fetch('http://localhost:3000/products');
+  const products = await res.json();
+  products.forEach(p => {
+    const card = document.createElement('article');
+    card.className = 'product-card';
+    card.setAttribute('data-id', p.id);
+    card.setAttribute('data-name', p.name);
+    card.setAttribute('data-price', p.price);
+    card.innerHTML = `
+      <img src="${p.image || 'image/a1.jpg'}" alt="${p.name}" style="cursor:pointer;">
+      <h3>${p.name}</h3>
+      <p class="price">${Number(p.price).toLocaleString('vi-VN')}₫</p>
+      <a class="btn detail-link" href="product-detail.html?id=${p.id}">Xem chi tiết sản phẩm</a>
+    `;
+    // Sự kiện click vào ảnh để xem chi tiết
+    card.querySelector('img').onclick = () => {
+      window.location.href = `product-detail.html?id=${p.id}`;
+    };
+    grid.appendChild(card);
+  });
 });
-</script>
-
-
+  </script>
 </body>
 </html>
