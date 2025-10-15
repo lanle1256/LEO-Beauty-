@@ -186,32 +186,24 @@
     </div>
   </main>
   <script src="script.js"></script>
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get('id');
-  const apiURL = 'https://68efa498b06cc802829e312e.mockapi.io/products';
-
-  async function loadDetail() {
-    const container = document.getElementById('detail-container');
-    if (!id) {
-      container.innerHTML = '<p>Không tìm thấy sản phẩm!</p>';
-      return;
-    }
-
-    try {
-      const res = await fetch(`${apiURL}/${id}`);
-      if (!res.ok) throw new Error('Không tìm thấy sản phẩm');
+  <script>
+    // Lấy id sản phẩm từ URL (?id=xxx)
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    async function loadDetail() {
+      if (!id) return document.getElementById('detail-container').innerHTML = 'Không tìm thấy sản phẩm!';
+      const res = await fetch('http://localhost:3000/products/' + id);
+      if (!res.ok) return document.getElementById('detail-container').innerHTML = 'Không tìm thấy sản phẩm!';
       const p = await res.json();
-
-      container.innerHTML = `
+      document.getElementById('detail-container').innerHTML = `
         <div class="detail-img">
-          <img class="main-img" src="${p.image || 'image/a1.jpg'}" alt="${p.name}">
+          <img class="main-img" src="${p.image || 'image/a1.jpg'}" alt="${p.name}" id="main-img">
           <div class="gallery"></div>
         </div>
         <div class="detail-info">
           <h2>${p.name}</h2>
           <div class="price">${Number(p.price).toLocaleString('vi-VN')}₫</div>
-          <div class="desc">${p.description || 'Chưa có mô tả.'}</div>
+          <div class="desc">${p.desc || 'Chưa có mô tả.'}</div>
           <div class="qty-group">
             <label for="qty">Số lượng:</label>
             <input type="number" id="qty" min="1" value="1" />
@@ -219,41 +211,32 @@
           <button class="btn" id="add-to-cart-detail">Thêm vào giỏ hàng</button>
         </div>
       `;
-
-      document.getElementById('add-to-cart-detail').onclick = function () {
+      document.getElementById('add-to-cart-detail').onclick = function() {
         const qty = Math.max(1, Number(document.getElementById('qty').value));
-        window.addToCart && window.addToCart({
-          id: p.id, name: p.name, price: p.price, image: p.image, qty, description: p.description
-        });
+        window.addToCart && window.addToCart({ id: p.id, name: p.name, price: p.price, image: p.image, qty, desc: p.desc });
         alert('Đã thêm vào giỏ hàng!');
       };
-
+      // Tự động tạo ảnh nhỏ trong bộ sưu tập
       const gallery = document.querySelector('.gallery');
       for (let i = 1; i <= 4; i++) {
         if (p['image' + i]) {
           const img = document.createElement('img');
           img.src = p['image' + i];
           img.alt = `${p.name} - Ảnh ${i}`;
-          img.onclick = function () {
-            document.querySelector('.main-img').src = this.src;
+          img.onclick = function() {
+            document.querySelector('.main-img img').src = this.src;
           };
           gallery.appendChild(img);
         }
       }
-    } catch (error) {
-      console.error(error);
-      container.innerHTML = '<p>Không thể tải sản phẩm 😢</p>';
     }
-  }
-
-  async function loadRelatedProducts() {
-    try {
-      const res = await fetch(apiURL);
+    async function loadRelatedProducts() {
+      if (!id) return;
+      const res = await fetch('http://localhost:3000/products?related_to=' + id);
+      if (!res.ok) return;
       const products = await res.json();
-      const related = products.filter(p => p.id !== id).sort(() => 0.5 - Math.random()).slice(0, 3);
       const container = document.getElementById('related-products');
-
-      related.forEach(p => {
+      products.forEach(p => {
         const card = document.createElement('div');
         card.className = 'other-card';
         card.innerHTML = `
@@ -262,19 +245,14 @@
           <div class="price">${Number(p.price).toLocaleString('vi-VN')}₫</div>
           <button class="btn">Xem chi tiết</button>
         `;
-        card.querySelector('.btn').onclick = function () {
+        card.querySelector('.btn').onclick = function() {
           window.location.href = 'product-detail.html?id=' + p.id;
         };
         container.appendChild(card);
       });
-    } catch (error) {
-      console.error(error);
     }
-  }
-
-  loadDetail();
-  loadRelatedProducts();
-</script>
-
+    loadDetail();
+    loadRelatedProducts();
+  </script>
 </body>
 </html>
