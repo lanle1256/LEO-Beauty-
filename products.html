@@ -174,42 +174,42 @@
     </div>
   </footer>
 
-  <script>
+ <script>
 document.addEventListener('DOMContentLoaded', async () => {
   const grid = document.getElementById('product-grid');
   
   try {
     const res = await fetch('https://68efa498b06cc802829e312e.mockapi.io/products');
+    if (!res.ok) throw new Error('Không thể tải sản phẩm');
     const products = await res.json();
 
-    grid.innerHTML = ''; // xóa nội dung cũ (nếu có)
+    grid.innerHTML = '';
+    if (products.length === 0) {
+      grid.innerHTML = '<p>Chưa có sản phẩm nào.</p>';
+      return;
+    }
 
     products.forEach(p => {
       const card = document.createElement('article');
       card.className = 'product-card';
-      card.setAttribute('data-id', p.id);
-      card.setAttribute('data-name', p.name);
-      card.setAttribute('data-price', p.price);
       card.innerHTML = `
         <img src="${p.image || 'image/a1.jpg'}" alt="${p.name}" style="cursor:pointer;">
         <h3>${p.name}</h3>
         <p class="price">${Number(p.price).toLocaleString('vi-VN')}₫</p>
-        <a class="btn detail-link" href="product-detail.html?id=${p.id}">Xem chi tiết sản phẩm</a>
+        <a class="btn detail-link" href="product-detail.html?id=${p.id}">Xem chi tiết</a>
       `;
-
-      // Khi click vào ảnh → mở chi tiết sản phẩm
       card.querySelector('img').onclick = () => {
         window.location.href = `product-detail.html?id=${p.id}`;
       };
-
       grid.appendChild(card);
     });
-  } catch (error) {
-    console.error('Lỗi khi tải sản phẩm:', error);
-    grid.innerHTML = '<p>Không thể tải sản phẩm 😢</p>';
+  } catch (err) {
+    console.error(err);
+    grid.innerHTML = '<p>Lỗi khi tải dữ liệu sản phẩm 😢</p>';
   }
 });
 </script>
+
 
 </body>
 </html>
