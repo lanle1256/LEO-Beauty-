@@ -178,7 +178,7 @@
   <script>
 document.addEventListener('DOMContentLoaded', async () => {
   const grid = document.getElementById('product-grid');
-  const res = await fetch('http://localhost:3000/products');
+  const res = await fetch(`https://68efa498b06cc802829e312e.mockapi.io/products/${id}`);
   const products = await res.json();
   products.forEach(p => {
     const card = document.createElement('article');
