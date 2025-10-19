@@ -3,109 +3,202 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Danh sách sản phẩm - LEO Beauty</title>
+  <title>Sản phẩm - LEO Beauty</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <meta name="description" content="Khám phá bộ sưu tập mỹ phẩm thiên nhiên chất lượng cao: kem dưỡng, serum, mặt nạ... An toàn cho da, chiết xuất từ thiên nhiên.">
+  <meta name="keywords" content="Leo Beautyful , sản phẩm mỹ phẩm thiên nhiên, mỹ phẩm hữu cơ, chăm sóc da tự nhiên, kem dưỡng thiên nhiên, sữa rửa mặt thiên nhiên">  
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #fffafc;
-      color: #333;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(135deg, #f8fdfb 0%, #e6f2ea 100%);
+      color: #063f2a;
       margin: 0;
     }
-    header {
-      background: #e91e63;
-      color: #fff;
+    .site-header {
+      background: #fff;
+      box-shadow: 0 2px 12px #e6f2ea;
+      padding: 0;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: #064124;
+      text-decoration: none;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+    .main-nav a {
+      color: #064124;
+      text-decoration: none;
+      margin: 0 16px;
+      font-weight: 500;
+      transition: color 0.2s;
+      font-size: 1.08rem;
+    }
+    .main-nav a:hover {
+      color: #1bb184;
+      text-decoration: underline;
+    }
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #064124;
+      margin: 32px 0 24px 0;
       text-align: center;
-      padding: 16px 0;
-      font-size: 22px;
-      font-weight: bold;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 20px;
-      padding: 40px;
-      max-width: 1200px;
-      margin: auto;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      margin-bottom: 48px;
     }
     .product-card {
       background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 15px;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px #e6f2ea;
+      padding: 24px 18px 32px 18px;
       text-align: center;
-      transition: 0.3s;
+      transition: box-shadow 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
     }
     .product-card:hover {
-      transform: scale(1.05);
+      box-shadow: 0 6px 32px #b2e2d3;
+      transform: translateY(-4px) scale(1.03);
     }
     .product-card img {
-      width: 100%;
-      height: 220px;
+      width: 140px;
+      height: 140px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 12px #b2e2d3;
+      border: 4px solid #e6f2ea;
+      background: #f8fdfb;
+      cursor: pointer;
     }
     .product-card h3 {
-      font-size: 18px;
-      margin: 10px 0 5px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.18rem;
+      color: #064124;
+      font-weight: 700;
+      margin-bottom: 8px;
+      margin-top: 0;
     }
-    .product-card p {
-      color: #555;
-      font-size: 14px;
-      min-height: 40px;
+    .product-card .price {
+      color: #1bb184;
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 14px;
     }
-    .product-card strong {
-      color: #e91e63;
-      font-size: 16px;
-    }
-    .btn {
-      background: linear-gradient(90deg, #e91e63, #ad1457);
-      color: white;
+    .btn.detail-link {
+      background: linear-gradient(90deg, #1bb184 0%, #064124 100%);
+      color: #fff;
       border: none;
-      border-radius: 6px;
-      padding: 8px 16px;
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-size: 1rem;
+      font-weight: 700;
       cursor: pointer;
+      box-shadow: 0 2px 8px #b2e2d3;
+      transition: background 0.2s, box-shadow 0.2s;
       text-decoration: none;
+      margin-top: auto;
       display: inline-block;
-      margin-top: 10px;
     }
-    .btn:hover {
-      background: linear-gradient(90deg, #ad1457, #e91e63);
+    .btn.detail-link:hover {
+      background: linear-gradient(90deg, #064124 0%, #1bb184 100%);
+      box-shadow: 0 4px 16px #b2e2d3;
+    }
+    .site-footer {
+      background: #e6f2ea;
+      color: #064124;
+      text-align: center;
+      padding: 24px 0;
+      margin-top: 48px;
+      font-size: 1.05rem;
+      border-top: 1px solid #b2e2d3;
+    }
+    @media (max-width: 900px) {
+      .product-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      .product-card img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    @media (max-width: 600px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <header>💄 LEO Beauty - Danh sách sản phẩm</header>
-  <div class="product-grid" id="product-grid">Đang tải sản phẩm...</div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">🌿 LEO Beauty</a>
+      <nav class="main-nav">
+        <a href="index.html">Trang chủ</a>
+        <a href="products.html">Sản phẩm</a>
+        <a href="about.html">Giới thiệu</a>
+        <a href="contact.html">Liên hệ</a>
+        <a class="cart-link" href="cart.html">Giỏ (<span id="cart-count">0</span>)</a>
+      </nav>
+    </div>
+  </header>
 
+  <main class="container">
+    <h2 class="page-title">Danh sách sản phẩm</h2>
+    <div class="product-grid" id="product-grid">
+      <!-- Sản phẩm sẽ được render bằng JS -->
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 LEO Beauty</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
   <script>
-    const apiURL = 'https://fakestoreapi.com/products';
-
-    async function loadProducts() {
-      try {
-        const res = await fetch(apiURL);
-        const products = await res.json();
-        const grid = document.getElementById('product-grid');
-        grid.innerHTML = '';
-
-        products.forEach(p => {
-          const card = document.createElement('div');
-          card.className = 'product-card';
-          card.innerHTML = `
-            <img src="${p.image}" alt="${p.title}">
-            <h3>${p.title}</h3>
-            <p>${p.description.substring(0, 60)}...</p>
-            <strong>${p.price.toLocaleString('vi-VN')}₫</strong><br>
-            <a class="btn" href="product-detail.html?id=${p.id}">Xem chi tiết</a>
-          `;
-          grid.appendChild(card);
-        });
-      } catch (err) {
-        console.error(err);
-        document.getElementById('product-grid').innerText = 'Không thể tải sản phẩm 😢';
-      }
-    }
-
-    loadProducts();
+document.addEventListener('DOMContentLoaded', async () => {
+  const grid = document.getElementById('product-grid');
+  const res = await fetch('http://localhost:3000/products');
+  const products = await res.json();
+  products.forEach(p => {
+    const card = document.createElement('article');
+    card.className = 'product-card';
+    card.setAttribute('data-id', p.id);
+    card.setAttribute('data-name', p.name);
+    card.setAttribute('data-price', p.price);
+    card.innerHTML = `
+      <img src="${p.image || 'image/a1.jpg'}" alt="${p.name}" style="cursor:pointer;">
+      <h3>${p.name}</h3>
+      <p class="price">${Number(p.price).toLocaleString('vi-VN')}₫</p>
+      <a class="btn detail-link" href="product-detail.html?id=${p.id}">Xem chi tiết sản phẩm</a>
+    `;
+    // Sự kiện click vào ảnh để xem chi tiết
+    card.querySelector('img').onclick = () => {
+      window.location.href = `product-detail.html?id=${p.id}`;
+    };
+    grid.appendChild(card);
+  });
+});
   </script>
 </body>
 </html>
