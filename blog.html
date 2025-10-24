@@ -3,43 +3,45 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bài viết - LEO Beauty</title>
-  <meta name="description" content="Tổng hợp các bài viết hướng dẫn chăm sóc da, giới thiệu sản phẩm và chia sẻ kiến thức từ LEO Beauty.">
+  <title>Bài viết | LEO Beauty</title>
+  <meta name="description" content="Khám phá các bài viết chia sẻ từ LEO Beauty về sản phẩm thiên nhiên: kem dưỡng Cocoon, sữa rửa mặt trà xanh và son dưỡng môi thuần chay.">
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Montserrat', Arial, sans-serif;
+      font-family: 'Montserrat', sans-serif;
       background: linear-gradient(135deg, #f8fdfb 0%, #e6f2ea 100%);
       color: #063f2a;
       margin: 0;
+      line-height: 1.7;
     }
     .container {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 0 20px 40px;
+      padding: 0 20px 50px;
     }
-    .page-title {
+    h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      color: #064124;
-      margin: 36px 0 24px 0;
       text-align: center;
-      font-weight: 700;
-      letter-spacing: 1px;
+      color: #064124;
+      margin-top: 40px;
+      font-size: 2rem;
     }
     .blog-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 24px;
+      margin-top: 40px;
     }
     .blog-item {
       background: #fff;
       border-radius: 16px;
-      box-shadow: 0 2px 12px #e6f2ea;
+      box-shadow: 0 2px 14px #e6f2ea;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+    .blog-item:hover {
+      transform: translateY(-4px);
     }
     .blog-item img {
       width: 100%;
@@ -48,23 +50,23 @@
     }
     .blog-content {
       padding: 18px 22px;
-      flex-grow: 1;
     }
     .blog-content h2 {
       font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
       color: #064124;
-      font-size: 1.25rem;
-      margin: 0 0 10px;
+      margin-bottom: 10px;
     }
     .blog-content p {
-      color: #063f2a;
       font-size: 1rem;
-      margin-bottom: 14px;
+      color: #063f2a;
+      margin-bottom: 12px;
     }
     .read-more {
+      display: inline-block;
       color: #1bb184;
-      text-decoration: none;
       font-weight: 600;
+      text-decoration: none;
     }
     .read-more:hover {
       text-decoration: underline;
@@ -72,58 +74,66 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="index.html">🌿 LEO Beauty</a>
-      <nav class="main-nav">
-        <a href="index.html">Trang chủ</a>
-        <a href="products.html">Sản phẩm</a>
-        <a href="about.html">Giới thiệu</a>
-        <a href="contact.html">Liên hệ</a>
-        <a href="blog.html">Bài viết</a>
-        <a href="seo.html">SEO</a>
-      </nav>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">🌿 LEO Beauty</a>
+    <nav class="main-nav">
+      <a href="index.html">Trang chủ</a>
+      <a href="products.html">Sản phẩm</a>
+      <a href="about.html">Giới thiệu</a>
+      <a href="contact.html">Liên hệ</a>
+      <a href="blog.html" class="active">Bài viết</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Góc chia sẻ từ LEO Beauty</h1>
+  <p style="text-align:center; color:#06684c; font-style:italic;">
+    Khám phá bí quyết làm đẹp tự nhiên cùng LEO Beauty – nơi mỗi sản phẩm là một câu chuyện chăm sóc da dịu dàng, an toàn và thuần chay 🌿
+  </p>
+
+  <section class="blog-list">
+
+    <!-- Bài 1 -->
+    <div class="blog-item">
+      <img src="https://image.cocoonvietnam.com/uploads/Artboard_40_72802554c6.jpg" alt="Kem dưỡng bí đao Cocoon">
+      <div class="blog-content">
+        <h2>Kem dưỡng bí đao Cocoon – Giải pháp cho làn da dầu mụn</h2>
+        <p>Kem dưỡng bí đao Cocoon giúp kiểm soát bã nhờn, giảm mụn và làm dịu làn da nhạy cảm. Kết cấu mỏng nhẹ, phù hợp với khí hậu Việt Nam.</p>
+        <a href="post1.html" class="read-more">Đọc tiếp →</a>
+      </div>
     </div>
-  </header>
 
-  <main class="container">
-    <h1 class="page-title">BÀI VIẾT TỪ LEO BEAUTY</h1>
-
-    <section class="blog-list">
-      <article class="blog-item">
-        <img src="https://i.imgur.com/1RprVss.jpg" alt="Cách chăm sóc da sau peel an toàn và hiệu quả">
-        <div class="blog-content">
-          <h2>Cách chăm sóc da sau peel an toàn và hiệu quả</h2>
-          <p>Da sau peel rất nhạy cảm, cần được phục hồi và dưỡng ẩm đúng cách. Bài viết hướng dẫn chi tiết giúp da khỏe và sáng mịn nhanh chóng.</p>
-          <a href="post1.html" class="read-more">Đọc tiếp →</a>
-        </div>
-      </article>
-
-      <article class="blog-item">
-        <img src="https://i.imgur.com/zpnTC5P.jpg" alt="Serum phục hồi da LEO Beauty – Giải pháp cứu nguy cho làn da nhạy cảm sau peel">
-        <div class="blog-content">
-          <h2>Serum phục hồi da LEO Beauty – Giải pháp cứu nguy cho làn da sau peel</h2>
-          <p>Serum phục hồi da LEO Beauty giúp làm dịu, cấp ẩm sâu và phục hồi làn da yếu sau peel, mang lại sự mềm mịn và tươi trẻ chỉ sau vài ngày.</p>
-          <a href="post2.html" class="read-more">Đọc tiếp →</a>
-        </div>
-      </article>
-
-      <article class="blog-item">
-        <img src="https://i.imgur.com/xsW5ozH.jpg" alt="Cách viết bài chuẩn SEO & Sử dụng SEO cho Website LEO Beauty">
-        <div class="blog-content">
-          <h2>Cách viết bài chuẩn SEO & Sử dụng SEO cho Website LEO Beauty</h2>
-          <p>Hướng dẫn chi tiết về cách nghiên cứu từ khóa, tối ưu cấu trúc và triển khai SEO hiệu quả cho website LEO Beauty, giúp nâng cao thứ hạng tìm kiếm.</p>
-          <a href="seo.html" class="read-more">Đọc tiếp →</a>
-        </div>
-      </article>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2025 LEO Beauty</p>
+    <!-- Bài 2 -->
+    <div class="blog-item">
+      <img src="https://product.hstatic.net/1000296801/product/sua-rua-mat-tra-xanh-3w-clinic-green-tea-foam-cleansing_a0608fc2934b49d9819848723ea8cf03.jpg" alt="Sữa Rửa Mặt Hữu Cơ The Herbal Cup Green Tea Cleanser">
+      <div class="blog-content">
+        <h2>Sữa Rửa Mặt Hữu Cơ The Herbal Cup Green Tea Cleanser – Thanh lọc và làm dịu làn da</h2>
+        <p>Chiết xuất trà xanh và nha đam giúp làm sạch sâu, ngăn ngừa mụn và giữ ẩm cho làn da mềm mịn suốt cả ngày.</p>
+        <a href="post2.html" class="read-more">Đọc tiếp →</a>
+      </div>
     </div>
-  </footer>
+
+    <!-- Bài 3 -->
+    <div class="blog-item">
+      <img src="https://cdn.bestme.vn/images/bestme/review-son-duong-burts-bees-co-mau-100-thien-nhien-2023-4.jpg" alt="Son Dưỡng Môi Tự Nhiên Burt’s Bees Beeswax Lip Balm">
+      <div class="blog-content">
+        <h2>Son Dưỡng Môi Tự Nhiên Burt’s Bees Beeswax Lip Balm – Mềm mịn tự nhiên</h2>
+        <p>Thỏi son dưỡng thuần chay giúp môi mềm mịn, căng bóng và hồng tự nhiên. Dưỡng ẩm sâu, phục hồi môi khô nứt nẻ hiệu quả.</p>
+        <a href="post3.html" class="read-more">Đọc tiếp →</a>
+      </div>
+    </div>
+
+  </section>
+
+  <a href="index.html" class="read-more" style="display:block;text-align:center;margin-top:40px;">← Quay lại Trang chủ</a>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2025 LEO Beauty</p>
+  </div>
+</footer>
 </body>
 </html>
