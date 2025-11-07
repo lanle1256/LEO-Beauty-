@@ -7,14 +7,22 @@
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
+    body { background-color: #f4f9f6; font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; }
+    header { background: #fff; padding: 16px 0; box-shadow: 0 2px 8px #e6f2ea; }
+    .container { width: 90%; max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: #064124; text-decoration: none; }
+    .main-nav a { margin-left: 20px; text-decoration: none; color: #064124; font-weight: 600; }
+    .main-nav a:hover { color: #1bb184; }
+
     .banner {
-      width: 100%;
+      width: 90%;
+      max-width: 1200px;
+      margin: 24px auto;
       height: 180px;
       background: linear-gradient(90deg, #e6f2ea 60%, #fff 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 32px;
       border-radius: 18px;
       box-shadow: 0 2px 16px #e6f2ea;
     }
@@ -23,8 +31,14 @@
       font-size: 2.2rem;
       color: #064124;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
     }
+    .banner img {
+      height: 120px;
+      border-radius: 12px;
+      margin-right: 32px;
+    }
+
     .detail-container {
       max-width: 900px;
       margin: 0 auto 40px auto;
@@ -33,160 +47,121 @@
       box-shadow: 0 2px 16px #e6f2ea;
       padding: 32px;
       display: flex;
+      flex-wrap: wrap;
       gap: 32px;
     }
-    .detail-img {
-      flex: 0 0 260px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 18px;
-    }
+    .detail-img { flex: 0 0 260px; display: flex; flex-direction: column; align-items: center; }
     .main-img {
-      width: 220px;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 14px;
-      box-shadow: 0 2px 12px #b2e2d3;
-      border: 4px solid #e6f2ea;
-      background: #f8fdfb;
-      cursor: pointer;
-      transition: box-shadow 0.2s;
-      display: block;
-      margin: 0 auto;
-    }
-    .main-img:hover {
-      box-shadow: 0 6px 24px #b2e2d3;
-    }
-    .gallery {
-      display: flex;
-      gap: 10px;
-      margin-top: 8px;
-    }
-    .gallery img {
-      width: 48px;
-      height: 48px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 2px solid #e6f2ea;
-      cursor: pointer;
-      transition: box-shadow 0.2s;
-      background: #f8fdfb;
-    }
-    .gallery img:hover {
-      box-shadow: 0 2px 8px #b2e2d3;
-      border-color: #1bb184;
+      width: 220px; height: 220px; object-fit: cover; border-radius: 14px;
+      box-shadow: 0 2px 12px #b2e2d3; border: 4px solid #e6f2ea;
     }
     .detail-info { flex: 1; }
     .detail-info h2 { font-size: 1.6rem; color: #064124; margin-bottom: 12px; }
     .detail-info .price { color: #1bb184; font-size: 1.2rem; font-weight: 700; margin-bottom: 18px; }
     .detail-info .desc { margin-bottom: 18px; color: #063f2a; }
-    .qty-group { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
-    .qty-group input { width: 60px; text-align: center; font-size: 1.1rem; padding: 6px; border-radius: 6px; border: 1px solid #e6f2ea; }
-    .btn { padding: 10px 28px; font-size: 1.08rem; border-radius: 8px; background: linear-gradient(90deg, #1bb184 0%, #064124 100%); color: #fff; font-weight: 700; border: none; cursor: pointer; }
-    .btn:hover { background: linear-gradient(90deg, #064124 0%, #1bb184 100%); }
+    .btn {
+      padding: 10px 28px; font-size: 1rem; border-radius: 8px;
+      background: linear-gradient(90deg, #1bb184 0%, #064124 100%);
+      color: #fff; border: none; cursor: pointer;
+    }
+
     .other-title {
+      text-align: center;
       font-family: 'Playfair Display', serif;
       font-size: 1.3rem;
       color: #064124;
-      margin: 32px 0 18px 0;
-      text-align: center;
+      margin: 40px 0 20px;
       font-weight: 700;
-      letter-spacing: 1px;
     }
+
     .other-products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 32px;
-      margin-bottom: 48px;
+      gap: 24px;
       max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto 60px auto;
     }
+
     .other-card {
       background: #fff;
       border-radius: 18px;
-      box-shadow: 0 2px 16px #e6f2ea;
-      padding: 18px 12px 24px 12px;
+      box-shadow: 0 2px 12px #e6f2ea;
       text-align: center;
-      transition: box-shadow 0.2s, transform 0.2s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
+      padding: 16px;
+      transition: 0.3s;
     }
-    .other-card:hover {
-      box-shadow: 0 6px 32px #b2e2d3;
-      transform: translateY(-4px) scale(1.03);
-    }
-    .other-card img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      box-shadow: 0 2px 8px #b2e2d3;
-      border: 2px solid #e6f2ea;
-      background: #f8fdfb;
-      cursor: pointer;
-    }
-    .other-card h3 {
-      font-size: 1.08rem;
-      color: #064124;
-      font-weight: 700;
-      margin-bottom: 6px;
-      margin-top: 0;
-    }
-    .other-card .price {
-      color: #1bb184;
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .other-card .btn {
-      padding: 6px 16px;
-      font-size: 0.9rem;
-      border-radius: 6px;
-      background: linear-gradient(90deg, #1bb184 0%, #064124 100%);
-      color: #fff;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .other-card .btn:hover {
-      background: linear-gradient(90deg, #064124 0%, #1bb184 100%);
-    }
+    .other-card:hover { transform: translateY(-4px); box-shadow: 0 4px 20px #b2e2d3; }
+    .other-card img { width: 90px; height: 90px; object-fit: cover; border-radius: 12px; margin-bottom: 12px; }
+    .other-card h3 { font-size: 1rem; color: #064124; margin: 8px 0; }
+    .other-card .price { color: #1bb184; font-weight: 700; margin-bottom: 8px; }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
+  <header>
+    <div class="container">
       <a class="logo" href="index.html">🌿 LEO Beauty</a>
       <nav class="main-nav">
         <a href="index.html">Trang chủ</a>
         <a href="products.html">Sản phẩm</a>
         <a href="about.html">Giới thiệu</a>
         <a href="contact.html">Liên hệ</a>
-        <a class="cart-link" href="cart.html">Giỏ (<span id="cart-count">0</span>)</a>
         <a href="seo.html">SEO</a>
       </nav>
     </div>
   </header>
-  <main>
-    <div class="banner">
-      <img src="image/avatar.jpg" alt="Banner" style="height:120px; border-radius:12px; margin-right:32px;">
-      <div class="banner-title">Tôn vinh vẻ đẹp tự nhiên cùng LEO Beauty</div>
-    </div>
-    <div class="detail-container" id="detail-container">
-      <!-- Nội dung sản phẩm sẽ được render bằng JS -->
-    </div>
-    <div class="other-title">Sản phẩm liên quan</div>
-    <div class="other-products" id="related-products">
-      <!-- Sản phẩm liên quan sẽ được render bằng JS -->
-    </div>
-  </main>
-  <script src="script.js"></script>
-  
+
+  <div class="banner">
+    <img src="images/banner.jpg" alt="LEO Beauty Banner">
+    <div class="banner-title">Tôn vinh vẻ đẹp tự nhiên cùng LEO Beauty</div>
+  </div>
+
+  <div class="detail-container" id="detail-container">
+    <!-- JS sẽ render nội dung -->
+  </div>
+
+  <div class="other-title">Sản phẩm liên quan</div>
+  <div class="other-products" id="related-products"></div>
+
+  <script>
+    // Dữ liệu sản phẩm
+    const products = [
+      {id:"a3fa", name:"Kem Dưỡng Ẩm Hữu Cơ Cocoon Winter Melon Cream", price:"250.000đ", desc:"Kem dưỡng ẩm thuần chay Cocoon Việt Nam, chiết xuất bí đao, tràm trà, rau má. Giảm dầu thừa, làm dịu và cấp ẩm cho da nhạy cảm.", img:"images/kem-duong-cocoon.jpg"},
+      {id:"b4fa", name:"Son Dưỡng Môi Tự Nhiên Burt’s Bees", price:"150.000đ", desc:"Son dưỡng môi 100% tự nhiên, không chứa paraben, giúp môi mềm mịn suốt ngày dài.", img:"images/son-duong.jpg"},
+      {id:"c5fa", name:"Sữa Rửa Mặt Hữu Cơ The Herbal Cup", price:"200.000đ", desc:"Sữa rửa mặt thiên nhiên chiết xuất trà xanh, làm sạch sâu và giữ ẩm cho da.", img:"images/sua-rua-mat.jpg"},
+      {id:"d6fa", name:"Nước Hoa Hồng Hoa Hồng Hữu Cơ", price:"300.000đ", desc:"Nước hoa hồng hữu cơ dưỡng ẩm, cân bằng pH và làm sáng da.", img:"images/nuoc-hoa-hong.jpg"},
+      {id:"e7fa", name:"Dầu Dừa Ép Lạnh Milaganics", price:"130.000đ", desc:"Dầu dừa nguyên chất giúp dưỡng tóc, dưỡng da và tẩy trang tự nhiên.", img:"images/dau-dua.jpg"}
+    ];
+
+    // Lấy ID từ URL
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const product = products.find(p => p.id === id) || products[0];
+
+    // Hiển thị chi tiết sản phẩm
+    const detail = document.getElementById("detail-container");
+    detail.innerHTML = `
+      <div class="detail-img">
+        <img src="${product.img}" alt="${product.name}" class="main-img">
+      </div>
+      <div class="detail-info">
+        <h2>${product.name}</h2>
+        <div class="price">${product.price}</div>
+        <div class="desc">${product.desc}</div>
+        <button class="btn">Thêm vào giỏ hàng</button>
+      </div>
+    `;
+
+    // Hiển thị sản phẩm liên quan
+    const related = document.getElementById("related-products");
+    related.innerHTML = products.filter(p => p.id !== product.id).slice(0,4)
+      .map(p => `
+        <div class="other-card">
+          <img src="${p.img}" alt="${p.name}">
+          <h3>${p.name}</h3>
+          <div class="price">${p.price}</div>
+          <a href="product-detail.html?id=${p.id}" class="btn">Xem chi tiết</a>
+        </div>
+      `).join("");
+  </script>
 </body>
 </html>
