@@ -176,30 +176,6 @@
   </footer>
 
   <script src="script.js"></script>
-  <script>
-document.addEventListener('DOMContentLoaded', async () => {
-  const grid = document.getElementById('product-grid');
-  const res = await fetch('http://localhost:3000/products');
-  const products = await res.json();
-  products.forEach(p => {
-    const card = document.createElement('article');
-    card.className = 'product-card';
-    card.setAttribute('data-id', p.id);
-    card.setAttribute('data-name', p.name);
-    card.setAttribute('data-price', p.price);
-    card.innerHTML = `
-      <img src="${p.image || 'image/a1.jpg'}" alt="${p.name}" style="cursor:pointer;">
-      <h3>${p.name}</h3>
-      <p class="price">${Number(p.price).toLocaleString('vi-VN')}₫</p>
-      <a class="btn detail-link" href="product-detail.html?id=${p.id}">Xem chi tiết sản phẩm</a>
-    `;
-    // Sự kiện click vào ảnh để xem chi tiết
-    card.querySelector('img').onclick = () => {
-      window.location.href = `product-detail.html?id=${p.id}`;
-    };
-    grid.appendChild(card);
-  });
-});
-  </script>
+ 
 </body>
 </html>
