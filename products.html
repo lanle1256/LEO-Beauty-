@@ -4,10 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sản phẩm - LEO Beauty</title>
-  <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <meta name="description" content="Khám phá bộ sưu tập mỹ phẩm thiên nhiên chất lượng cao: kem dưỡng, serum, mặt nạ... An toàn cho da, chiết xuất từ thiên nhiên.">
-  <meta name="keywords" content="Leo Beautyful , sản phẩm mỹ phẩm thiên nhiên, mỹ phẩm hữu cơ, chăm sóc da tự nhiên, kem dưỡng thiên nhiên, sữa rửa mặt thiên nhiên">  
+  <meta name="keywords" content="Leo Beautyful , sản phẩm mỹ phẩm thiên nhiên, mỹ phẩm hữu cơ, chăm sóc da tự nhiên, kem dưỡng thiên nhiên, sữa rửa mặt thiên nhiên">
   <style>
     body {
       font-family: 'Montserrat', Arial, sans-serif;
@@ -25,6 +24,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 18px 0;
+      max-width: 1100px;
+      margin: auto;
     }
     .logo {
       font-family: 'Playfair Display', serif;
@@ -59,7 +60,8 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 32px;
-      margin-bottom: 48px;
+      margin: 0 auto 48px;
+      max-width: 1100px;
     }
     .product-card {
       background: #fff;
@@ -89,7 +91,6 @@
       cursor: pointer;
     }
     .product-card h3 {
-      font-family: 'Montserrat', Arial, sans-serif;
       font-size: 1.18rem;
       color: #064124;
       font-weight: 700;
@@ -157,16 +158,14 @@
         <a href="about.html">Giới thiệu</a>
         <a href="contact.html">Liên hệ</a>
         <a class="cart-link" href="cart.html">Giỏ (<span id="cart-count">0</span>)</a>
-         <a href="blog.html">Bài viết</a>
+        <a href="blog.html">Bài viết</a>
       </nav>
     </div>
   </header>
 
-   <main class="container">
+  <main>
     <h2 class="page-title">Danh sách sản phẩm</h2>
-    <div class="product-grid" id="product-grid">
-      <!-- Sản phẩm sẽ được render bằng JS -->
-    </div>
+    <div class="product-grid" id="product-grid"></div>
   </main>
 
   <footer class="site-footer">
@@ -175,7 +174,61 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const products = [
+      {
+        name: "Kem Dưỡng Ẩm Tự Nhiên",
+        price: "250.000đ",
+        image: "https://i.imgur.com/tZ4w9ak.png",
+        desc: "Kem dưỡng ẩm chiết xuất thiên nhiên giúp làn da mềm mịn và sáng khỏe.",
+      },
+      {
+        name: "Serum Vitamin C",
+        price: "320.000đ",
+        image: "https://i.imgur.com/kp0qBlV.png",
+        desc: "Serum làm sáng da, giảm thâm nám và tăng độ đàn hồi cho da.",
+      },
+      {
+        name: "Sữa Rửa Mặt Thảo Mộc",
+        price: "180.000đ",
+        image: "https://i.imgur.com/L0AVJbT.png",
+        desc: "Làm sạch nhẹ nhàng, giữ ẩm và giúp da sáng tự nhiên.",
+      },
+      {
+        name: "Mặt Nạ Dưỡng Da Hoa Hồng",
+        price: "200.000đ",
+        image: "https://i.imgur.com/xMdxYtR.png",
+        desc: "Cung cấp độ ẩm sâu, giúp da mềm mịn và căng bóng.",
+      },
+      {
+        name: "Tẩy Trang Thiên Nhiên",
+        price: "150.000đ",
+        image: "https://i.imgur.com/sPr03Be.png",
+        desc: "Làm sạch lớp trang điểm hiệu quả mà không gây khô da.",
+      }
+    ];
+
+    const productGrid = document.getElementById("product-grid");
+
+    products.forEach((p, index) => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
+        <img src="${p.image}" alt="${p.name}">
+        <h3>${p.name}</h3>
+        <div class="price">${p.price}</div>
+        <a class="btn detail-link" href="product-detail.html" onclick="viewDetail(${index})">Xem chi tiết</a>
+      `;
+      productGrid.appendChild(card);
+    });
+
+    function viewDetail(index) {
+      localStorage.setItem("productDetail", JSON.stringify(products[index]));
+    }
+  </script>
+</body>
+</html>
+
  
 </body>
 </html>
