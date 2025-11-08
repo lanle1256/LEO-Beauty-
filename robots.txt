@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lanle1256.github.io/LEO-Beauty-/sitemap.xml
